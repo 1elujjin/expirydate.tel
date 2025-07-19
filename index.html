@@ -1,82 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="favicon.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./src/style.css" />
-        <title>STUDIO TOMÁS SARACENO</title>
-    </head>
-    <body class="">
-        <nav class="flex items-center py-4 fixed top-0 left-0 right-0 px-base justify-between">
-            <a href="" class="sm:text-[19px] block tracking-[0.12em] relative font-bauPro z-[100] uppercase text-[#ffffffcc]"
-                >STUDIO TOMÁS SARACENO</a
-            >
-            <!-- MENU Button -->
-            <button id="menu-toggle" class="uppercase tracking-wide text-2xl font-sans cursor-pointer md:text-4xl font-bold text-white">MENU</button>
+<head>
+  <meta charset="UTF-8">
+  <title>expiryDate</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    color: white;
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    touch-action: none;
+  }
 
-            <!-- Right Sidebar -->
-            <div
-                id="sidebar"
-                class="fixed top-0 px-base py-5 right-0 w-[300px] h-full bg-neutral-900 text-white z-[200] transition-transform duration-300 translate-x-full overflow-y-auto"
-            >
-                <button id="close-sidebar" class="uppercase font-bold tracking-wide text-2xl md:text-4xl font-sans cursor-pointer text-white">
-                    CLOSE
-                </button>
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+  }
 
-                <input
-                    type="text"
-                    placeholder="Search"
-                    class="w-full bg-transparent border-b border-white mb-8 mt-10 text-sm text-white italic placeholder:text-gray-400 focus:outline-none"
-                />
+  canvas {
+    display: block;
+    image-rendering: pixelated;
+    max-width: 100vw;
+    max-height: 90vh;
+  }
 
-                <div class="space-y-6">
-                    <div>
-                        <h3 class="text-sm font-bold tracking-widest text-gray-400 mb-2">PROJECTS</h3>
-                        <ul class="space-y-1 text-gray-300">
-                            <li>Exhibitions</li>
-                            <li>Artworks</li>
-                            <li>Permanent Installations</li>
-                            <li>Biennials & Triennials</li>
-                            <li>Events</li>
-                        </ul>
-                    </div>
+  #nav {
+    font-size: 10px;
+    margin-top: 8px;
+    padding-left: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-                    <div>
-                        <h3 class="text-sm font-bold tracking-widest text-gray-400 mb-2">PRINT</h3>
-                    </div>
+  #nav a {
+    text-decoration: none;
+    color: white;
+    margin: 0 6px;
+    font-size: 10px;
+  }
 
-                    <div>
-                        <h3 class="text-sm font-bold tracking-widest text-gray-400 mb-2">ABOUT</h3>
-                    </div>
+  #nav a:hover {
+    text-decoration: underline;
+  }
+</style>
 
-                    <div>
-                        <h3 class="text-sm font-bold tracking-widest text-gray-400 mb-2">CURRENT & UPCOMING</h3>
-                    </div>
+</head>
+<body>
 
-                    <div>
-                        <h3 class="text-sm font-bold tracking-widest text-gray-400 mb-2">AEROCENE</h3>
-                    </div>
+  <div class="container">
+    <canvas id="ascii"></canvas>
+    <div id="nav">
+      <a href="#">records</a> /
+      <a href="mailto:hello@expirydate.by">contact</a> /
+      <a href="#">bandcamp</a> /
+      <a href="#">instagram</a>
+    </div>
+  </div>
 
-                    <div>
-                        <h3 class="text-sm font-bold tracking-widest text-gray-400 mb-2">ARACHNOPHILIA</h3>
-                    </div>
-
-                    <div>
-                        <h3 class="text-sm font-bold tracking-widest text-gray-400 mb-2">NGGAMDU.ORG</h3>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <div id="link-container" class="pt-20 md:pt-32 px-base text-justify leading-snug">
-            <!-- all image will be dynamically append here -->
-        </div>
-
-        <img id="hover-image" class="fixed hidden bg-white z-50 pointer-events-none shadow-xl" src="" alt="Preview" />
-
-        <div id="overlay" class="fixed bg-black/70 inset-0 transition-opacity duration-700 opacity-100 pointer-events-auto"></div>
-
-        <script type="module" src="/src/main.js"></script>
-        <script type="module" src="/src/overlay.js"></script>
-    </body>
+  <script src="./script.js"></script>
+</body>
 </html>
