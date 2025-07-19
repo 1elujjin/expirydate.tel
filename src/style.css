@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+    --font-bau: "BauWeb", sans-serif;
+    --font-bauPro: "BauWebPro", sans-serif;
+    --font-sabon: "SabonNextLT", sans-serif;
+}
+
+body {
+    @apply bg-black font-bau text-[#ffffffcc] antialiased;
+}
+
+@font-face {
+    font-family: "SabonNextLT";
+    src: url("/fonts/sabon.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "BauWebPro";
+    src: url("/fonts/bauweb-pro.woff2") format("woff2");
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "BauWeb";
+    src: url("/fonts/bauweb.woff2") format("woff2");
+    font-style: normal;
+    font-display: swap;
+}
+
+@layer components {
+    .px-base {
+        @apply px-4 lg:px-16;
+    }
+}
+
+.intro-img::after {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border-radius: 1rem;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.2), transparent);
+  transition: all 0.6s ease;
+  z-index: -1;
+  pointer-events: none;
+}
