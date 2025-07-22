@@ -11,10 +11,12 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  touch-action: none;
+  overflow: hidden;
   user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  overscroll-behavior: none;
+  touch-action: none;
 }
 
 canvas {
