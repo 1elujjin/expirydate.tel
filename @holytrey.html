@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
@@ -214,36 +214,35 @@
         >
       </div>
     </div>
-<script src="https://cdn.jsdelivr.net/npm/counterapi/dist/counter.browser.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', async function () {
-    const counterEl = document.getElementById('counter');
-    const counter = new Counter({ workspace: 'expirydate' });
-    const cooldownMs = 2 * 60 * 60 * 1000; // 2 hours
-    const lastHit = localStorage.getItem('holytrey_lastHit');
-    const now = Date.now();
+    <script src="https://cdn.jsdelivr.net/npm/counterapi/dist/counter.browser.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async function () {
+        const counterEl = document.getElementById("counter");
+        const counter = new Counter({ workspace: "expirydate" });
+        const cooldownMs = 2 * 60 * 60 * 1000; // 2 hours
+        const lastHit = localStorage.getItem("holytrey_lastHit");
+        const now = Date.now();
 
-    counterEl.textContent = '…';
+        counterEl.textContent = "…";
 
-    try {
-      const current = await counter.get('holytrey');
-      let count = current?.data?.up_count ?? 0;
+        try {
+          const current = await counter.get("holytrey");
+          let count = current?.data?.up_count ?? 0;
 
-      if (!lastHit || now - parseInt(lastHit) > cooldownMs) {
-        const updated = await counter.up('holytrey', { distinct: true });
-        if (updated && typeof updated.data?.up_count === 'number') {
-          count = updated.data.up_count;
-          localStorage.setItem('holytrey_lastHit', now);
+          if (!lastHit || now - parseInt(lastHit) > cooldownMs) {
+            const updated = await counter.up("holytrey", { distinct: true });
+            if (updated && typeof updated.data?.up_count === "number") {
+              count = updated.data.up_count;
+              localStorage.setItem("holytrey_lastHit", now);
+            }
+          }
+
+          counterEl.textContent = count;
+        } catch (error) {
+          console.error("counterapi error:", error);
+          counterEl.textContent = "—";
         }
-      }
-
-      counterEl.textContent = count;
-    } catch (error) {
-      console.error('counterapi error:', error);
-      counterEl.textContent = '—';
-    }
-  });
-</script>
-
+      });
+    </script>
   </body>
 </html>

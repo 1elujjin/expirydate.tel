@@ -9,15 +9,9 @@
     <meta content="bucket/img/favicon.png" property="og:image" />
     <meta property="og:description" content="@elujjin | UUID 1" />
     <meta name="description" content="@elujjin | UUID 1" />
-    <meta
-      property="og:image"
-      content="https://images-ext-1.discordapp.net/external/yNU9dcPtwNFeUCSy4dx0-807biLloYAXNSnc2Vnkub0/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1242825092686417941/3a673d588a49b7e9631b19c5843398d7.png"
-    />
+    <meta property="og:image" content="https://images-ext-1.discordapp.net/external/yNU9dcPtwNFeUCSy4dx0-807biLloYAXNSnc2Vnkub0/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1242825092686417941/3a673d588a49b7e9631b19c5843398d7.png" />
     <meta name="google-adsense-account" content="ca-pub-5761999868217749" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
       * {
         font-family: 微軟正黑體;
@@ -66,7 +60,7 @@
       .avatar-container {
         position: absolute;
         bottom: -25px;
-        left: 235px; /* moved further right */
+        left: 235px;
         display: flex;
         align-items: center;
         gap: 6px;
@@ -108,7 +102,7 @@
         z-index: 999;
       }
       .links {
-        margin-top: 60px;
+        margin-top: 0px !important;
         padding: 20px;
         display: flex;
         flex-direction: column;
@@ -121,9 +115,7 @@
         text-decoration: none;
         color: black;
         letter-spacing: 1px;
-        transition:
-          background-color 0.3s,
-          color 0.3s;
+        transition: background-color 0.3s, color 0.3s;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -139,27 +131,58 @@
     <div class="box">
       <div class="top">
         <div class="avatar-container">
-          <div class="badge" data-title="UUID 1">
-            <i class="fas fa-check"></i>
-          </div>
-          <div class="badge" data-title="Priority">
-            <i class="fas fa-star"></i>
-          </div>
+          <div class="badge" data-title="UUID 1"><i class="fas fa-check"></i></div>
+          <div class="badge" data-title="Priority"><i class="fas fa-star"></i></div>
           <div class="avatar"></div>
         </div>
         <h2 class="name">艾路吉恩<span class="smallText">Elujjin</span></h2>
       </div>
+
+      <div style="padding: 7px 20px 0; background-color: #fff; font-family: 'Segoe UI', sans-serif;">
+        <div style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: #444;">
+          <a href="#" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 6px;">
+            𓃔 <span id="counter">…</span>
+          </a>
+        </div>
+        <div style="margin-top: 2px; font-size: 13px; color: #777;">⚲ Astana, Kazakhstan</div>
+      </div>
+
       <div class="links">
-        <a class="link" href="mailto:1@elujj.in"
-          ><i class="fas fa-envelope"></i>Email</a
-        >
-        <a class="link" href="https://instagram.com/elujjin" target="_blank"
-          ><i class="fab fa-instagram"></i>Instagram</a
-        >
-        <a class="link" href="https://soundcloud.com/elujjin" target="_blank"
-          ><i class="fab fa-soundcloud"></i>SoundCloud</a
-        >
+        <a class="link" href="mailto:1@elujj.in"><i class="fas fa-envelope"></i>Email</a>
+        <a class="link" href="https://instagram.com/elujjin" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+        <a class="link" href="https://soundcloud.com/elujjin" target="_blank"><i class="fab fa-soundcloud"></i>SoundCloud</a>
       </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/counterapi/dist/counter.browser.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async function () {
+        const counterEl = document.getElementById("counter");
+        const counter = new Counter({ workspace: "expirydate" });
+        const cooldownMs = 2 * 60 * 60 * 1000;
+        const lastHit = localStorage.getItem("elujjin_lastHit");
+        const now = Date.now();
+
+        counterEl.textContent = "…";
+
+        try {
+          const current = await counter.get("elujjin");
+          let count = current?.data?.up_count ?? 0;
+
+          if (!lastHit || now - parseInt(lastHit) > cooldownMs) {
+            const updated = await counter.up("elujjin", { distinct: true });
+            if (updated && typeof updated.data?.up_count === "number") {
+              count = updated.data.up_count;
+              localStorage.setItem("elujjin_lastHit", now);
+            }
+          }
+
+          counterEl.textContent = count;
+        } catch (error) {
+          console.error("counterapi error:", error);
+          counterEl.textContent = "—";
+        }
+      });
+    </script>
   </body>
 </html>
