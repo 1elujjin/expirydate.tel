@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
@@ -215,30 +215,20 @@
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/counterapi/dist/counter.browser.min.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", async function () {
-        const counterEl = document.getElementById("counter");
-        const counter = new Counter({
-          workspace: "expirydate",
-        });
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const counter = new Counter({ workspace: 'expirydate' });
 
-        counterEl.textContent = "…";
-
-        try {
-          const current = await counter.get("holytrey");
-          let count = current?.value ?? 0;
-
-          const updated = await counter.up("holytrey", { distinct: true });
-          if (updated && typeof updated.value === "number") {
-            count = updated.value;
-          }
-
-          counterEl.textContent = count;
-        } catch (error) {
-          console.error("counterapi error:", error);
-          counterEl.textContent = "—";
-        }
+    counter.up('holytrey')
+      .then(result => {
+        document.getElementById('counter').textContent = result.value;
+      })
+      .catch(error => {
+        console.error('Error tracking page view:', error);
+        document.getElementById('counter').textContent = '—';
       });
-    </script>
+  });
+</script>
+
   </body>
 </html>
