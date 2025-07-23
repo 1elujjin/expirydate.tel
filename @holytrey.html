@@ -157,7 +157,7 @@
 <div style="padding: 7px 20px 0; background-color: #1e1e1e; font-family: 'Segoe UI', sans-serif;">
   <div style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: #bbb;">
     <a href="#" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 6px;">
-      𓃔 <span id="counter">0</span>
+      𓃔 <span id="counter">…</span>
     </a>
   </div>
   <div style="margin-top: 2px; font-size: 13px; color: #888;">⚲     Unknown, USA</div>
@@ -196,22 +196,35 @@
     </div>
 <script src="https://cdn.jsdelivr.net/npm/counterapi/dist/counter.browser.min.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', async function () {
+    const counterEl = document.getElementById('counter');
     const counter = new Counter({
-      workspace: 'holytrey',
+      workspace: 'expirydate',
       accessToken: 'ut_gzoLtsbTirnwM0x7cYx2rQHgC8RL8reAsRoEEhHo'
     });
 
-    counter.up('page-views')
-      .then(result => {
-        document.getElementById('counter').textContent = result.value;
-      })
-      .catch(error => {
-        console.error('Error tracking page view:', error);
-        document.getElementById('counter').textContent = '—';
-      });
+    counterEl.textContent = '…';
+
+    try {
+      const current = await counter.get('holytrey');
+      let count = current?.value ?? 0;
+
+      const updated = await counter.up('holytrey', { distinct: true });
+      if (updated && typeof updated.value === 'number') {
+        count = updated.value;
+      }
+
+      counterEl.textContent = count;
+    } catch (error) {
+      console.error('counterapi error:', error);
+      counterEl.textContent = '—';
+    }
   });
 </script>
+
+
+
+
 
   </body>
 </html>
