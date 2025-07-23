@@ -108,7 +108,7 @@
         z-index: 999;
       }
       .links {
-        margin-top: 60px;
+        margin-top: 0px !important;
         padding: 20px;
         display: flex;
         flex-direction: column;
@@ -145,8 +145,25 @@
           </div>
           <div class="avatar"></div>
         </div>
-        <h2 class="name">神聖崔<span class="smallText">Treyy</span></h2>
+<h2 class="name">
+  神聖崔
+  <span class="smallText">Treyy</span>
+</h2>
+
+
+
+        
       </div>
+<div style="padding: 7px 20px 0; background-color: #1e1e1e; font-family: 'Segoe UI', sans-serif;">
+  <div style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: #bbb;">
+    <a href="#" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 6px;">
+      𓃔 <span id="counter">0</span>
+    </a>
+  </div>
+  <div style="margin-top: 2px; font-size: 13px; color: #888;">⚲     Unknown, USA</div>
+</div>
+
+
       <div class="links">
         <a
           class="link"
@@ -177,5 +194,24 @@
         >
       </div>
     </div>
+<script src="https://cdn.jsdelivr.net/npm/counterapi/dist/counter.browser.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const counter = new Counter({
+      workspace: 'holytrey',
+      accessToken: 'ut_gzoLtsbTirnwM0x7cYx2rQHgC8RL8reAsRoEEhHo'
+    });
+
+    counter.up('page-views')
+      .then(result => {
+        document.getElementById('counter').textContent = result.value;
+      })
+      .catch(error => {
+        console.error('Error tracking page view:', error);
+        document.getElementById('counter').textContent = '—';
+      });
+  });
+</script>
+
   </body>
 </html>
