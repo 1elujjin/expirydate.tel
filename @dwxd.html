@@ -2,13 +2,13 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
-    <title>斯维兹 @swerz</title>
+    <title>死人 @dwxd</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta content="en_US" property="og:locale" />
     <meta content="website" property="og:type" />
-    <meta property="og:description" content="@swerz | UUID 3" />
-    <meta name="description" content="@swerz | UUID 3" />
-    <meta property="og:image" content="uuid_3_profile.jpg" />
+    <meta property="og:description" content="@dwxd | UUID 4" />
+    <meta name="description" content="@dwxd | UUID 4" />
+    <meta property="og:image" content="uuid_4_profile.png" />
     <meta name="google-adsense-account" content="ca-pub-5761999868217749" />
     <link
       rel="stylesheet"
@@ -38,7 +38,7 @@
         overflow: hidden;
       }
       .top {
-        background-image: url(bucket/img/uuid_3_banner.png);
+        background-image: url(bucket/img/uuid_4_banner.png);
         height: 220px;
         background-size: cover;
         background-position: center;
@@ -72,7 +72,7 @@
       .avatar {
         width: 80px;
         height: 80px;
-        background-image: url(bucket/img/uuid_3_profile.jpg);
+        background-image: url(bucket/img/uuid_4_profile.png);
         background-size: cover;
         background-position: center;
         border: 3px solid #1e1e1e;
@@ -137,14 +137,14 @@
     <div class="box">
       <div class="top">
         <div class="avatar-container">
-          <div class="badge" data-title="UUID 3">
+          <div class="badge" data-title="UUID 4">
             <i class="fas fa-check"></i>
           </div>
           <div class="avatar"></div>
         </div>
         <h2 class="name">
-          斯维兹
-          <span class="smallText">Swerz</span>
+          死人
+          <span class="smallText">dwxd</span>
         </h2>
       </div>
       <div
@@ -177,28 +177,31 @@
           </a>
         </div>
         <div style="margin-top: 2px; font-size: 13px; color: #888">
-          ⚲ London, United Kingdom
+          ⚲ Santa Catarina, Brazil
         </div>
       </div>
 
       <div class="links">
         <a
           class="link"
-          href="https://www.instagram.com/swerz11__"
+          href="https://discord.com/users/373146367566151691"
           target="_blank"
-          ><i class="fab fa-instagram"></i>Instagram</a
-        >
-        <a class="link" href="https://soundcloud.com/swerz11" target="_blank"
-          ><i class="fab fa-soundcloud"></i>SoundCloud</a
+          ><i class="fab fa-discord"></i>Discord</a
         >
         <a
           class="link"
-          href="https://www.youtube.com/@prodswerz11"
+          href="https://www.instagram.com/dwxdbandz"
           target="_blank"
+          ><i class="fab fa-instagram"></i>Instagram</a
+        >
+        <a class="link" href="https://www.last.fm/user/dwxd" target="_blank"
+          ><i class="fab fa-lastfm"></i>Last.fm</a
+        >
+        <a class="link" href="https://youtube.com/@dwxdkiller" target="_blank"
           ><i class="fab fa-youtube"></i>YouTube</a
         >
-        <a class="link" href="https://x.com/swerz11_" target="_blank"
-          ><i class="fab fa-twitter"></i>Twitter/X</a
+        <a class="link" href="https://t.me/dwxdnondeath" target="_blank"
+          ><i class="fab fa-telegram"></i>Telegram</a
         >
       </div>
     </div>
@@ -208,20 +211,20 @@
         const counterEl = document.getElementById("counter");
         const counter = new Counter({ workspace: "expirydate" });
         const cooldownMs = 2 * 60 * 60 * 1000; // 2 hours
-        const lastHit = localStorage.getItem("swerz_lastHit");
+        const lastHit = localStorage.getItem("dwxd_lastHit");
         const now = Date.now();
 
         counterEl.textContent = "…";
 
         try {
-          const current = await counter.get("swerz");
+          const current = await counter.get("dwxd");
           let count = current?.data?.up_count ?? 0;
 
           if (!lastHit || now - parseInt(lastHit) > cooldownMs) {
-            const updated = await counter.up("swerz", { distinct: true });
+            const updated = await counter.up("dwxd", { distinct: true });
             if (updated && typeof updated.data?.up_count === "number") {
               count = updated.data.up_count;
-              localStorage.setItem("swerz_lastHit", now);
+              localStorage.setItem("dwxd_lastHit", now);
             }
           }
 
