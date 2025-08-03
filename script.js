@@ -2,8 +2,8 @@ print({
   canvas: document.getElementById("ascii"),
   image:
     "https://images-ext-1.discordapp.net/external/XjS2CiBV1xcbdpBZYI-vnAed76rfvVcs_BmV2XOWVJY/http/static7.depositphotos.com/1000291/685/i/950/depositphotos_6850425-stock-photo-white-black-milch-cow-on.jpg?format=webp&width=1637&height=1090",
-  fontSize: 10,
-  spaceing: 8,
+  fontSize: 7,
+  spaceing: 7,
 });
 
 const map = (s, a1, a2, b1, b2) => b1 + ((s - a1) * (b2 - b1)) / (a2 - a1);
